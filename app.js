@@ -6,7 +6,16 @@ new Vue({
         website: 'https://www.google.com',
         age: 21,
         x: 0,
-        y: 0
+        y: 0,
+        text: '',
+        available: false,
+        nearby: false,
+        success: false,
+        error: false,
+        courses: [
+            {id: 'CSE-103', sub: 'Discrete math'},
+            {id: 'CSE-107', sub: 'OOP'}
+        ]
     },
     methods: {
         greet: function(time){
@@ -18,6 +27,14 @@ new Vue({
         updateXY: function(event){
             this.x = event.offsetX;
             this.y = event.offsetY;
+        }
+    },
+    computed: {
+        compClasses: function(){
+            return {
+                available: this.available,
+                nearby: this.nearby
+            }
         }
     }
 });
