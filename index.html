@@ -17,7 +17,38 @@
         <button v-on:click="add(1)">Add</button>
         <button v-on:click="age--">Subtract</button>
         <button @dblclick="add(10)">Add 10 years</button>
+        <input type="text" v-model="text">
+        <p>{{text}}</p>
         <div id="canvas" v-on:mousemove="updateXY">{{x}}, {{y}}</div>
+        <div @click="available = !available" v-bind:class="{available:available}">
+            <span>Availability</span>
+        </div>
+        <button @click="available = !available">Toggle available</button>
+        <button @click="nearby = !nearby">Toggle nearby</button>
+        <div v-bind:class="compClasses">
+            <span>Gamsahabnida</span>
+        </div>
+        <div>
+            <h2><u>CONDITIONALS</u></h2>
+            <button @click="success = !success">Toggle success</button>
+            <button @click="error = !error">Toggle error</button>
+            <!-- we can also use v-else-if="" -->
+            <p v-if="success">Success persists</p>
+            <p v-if="error">Error remains</p>
+        </div>
+        <div>
+            <!-- we can use <template> tag so that only the contents get published -->
+            <h2><u>LOOPS</u></h2>
+            <ul>
+                <li v-for="course in courses">Course {{course.id}} is for {{course.sub}}</li>
+            </ul>
+            <hr>
+            <template v-for="course in courses">
+                <template v-for="(val,key) in course">
+                    <p>{{key}} - {{val}}</p>
+                </template>
+            </template>
+        </div>
     </div>
 
     <script src="app.js"></script>
